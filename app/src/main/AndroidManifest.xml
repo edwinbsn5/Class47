@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="class47.mainapp.network">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_CORSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <!-- android:largeHeap="true" -->
+
+    <application
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
+        android:name="class47.mainapp.network.app.App"
+        android:allowBackup="true"
+        android:largeHeap="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/MyMaterialTheme">
+
+        <!-- AdMob App ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+
+        </provider>
+
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value="ru.ifsoft.network.SearchActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="class47.mainapp.network.AppActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_action_push_notification" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <service
+            android:name="class47.mainapp.network.service.MyFcmListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="class47.mainapp.network.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.SignupActivity"
+            android:label="@string/title_activity_signup"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.MainActivity"
+            android:configChanges="orientation"
+            android:windowSoftInputMode="stateHidden"
+            android:label="@string/title_activity_feeds" />
+        <activity
+            android:name="class47.mainapp.network.RecoveryActivity"
+            android:label="@string/title_activity_recovery"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name="class47.mainapp.network.WebViewActivity"
+            android:label="@string/title_activity_web_view" />
+        <activity
+            android:name="class47.mainapp.network.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.ServicesActivity"
+            android:label="@string/title_activity_services" />
+        <activity
+            android:name="class47.mainapp.network.NewItemActivity"
+            android:label="@string/title_activity_new_item" />
+        <activity
+            android:name="class47.mainapp.network.NewGalleryItemActivity"
+            android:label="@string/title_activity_new_gallery_item" />
+        <activity
+            android:name="class47.mainapp.network.ViewItemActivity"
+            android:label="@string/title_activity_view_item"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.ProfileActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_profile" />
+        <activity
+            android:name="class47.mainapp.network.SearchActivity"
+            android:label="@string/title_activity_search">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name="class47.mainapp.network.NotificationsActivity"
+            android:label="@string/title_activity_notifications" />
+        <activity
+            android:name="class47.mainapp.network.PhotoViewActivity"
+            android:label="@string/title_activity_photo_view"
+            android:theme="@style/PhotoViewTheme" />
+        <activity
+            android:name="class47.mainapp.network.VideoViewActivity"
+            android:label="@string/title_activity_video_view"
+            android:theme="@style/PhotoViewTheme"
+            android:configChanges="orientation|screenSize|layoutDirection" />
+        <activity
+            android:name="class47.mainapp.network.HashtagsActivity"
+            android:label="@string/title_activity_hashtags" />
+        <activity
+            android:name="class47.mainapp.network.FollowersActivity"
+            android:label="@string/title_activity_followers" />
+        <activity
+            android:name="class47.mainapp.network.LikersActivity"
+            android:label="@string/title_activity_likers" />
+        <activity
+            android:name="class47.mainapp.network.AccountSettingsActivity"
+            android:label="@string/title_activity_account_settings"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.BlackListActivity"
+            android:label="@string/title_activity_black_list" />
+        <activity
+            android:name="class47.mainapp.network.DialogsActivity"
+            android:label="@string/title_activity_dialogs" />
+        <activity
+            android:name="class47.mainapp.network.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="class47.mainapp.network.NotificationsSettingsActivity"
+            android:label="@string/title_activity_notifications_settings" />
+        <activity
+            android:name="class47.mainapp.network.PrivacySettingsActivity"
+            android:label="@string/title_activity_privacy_settings" />
+        <activity
+            android:name="class47.mainapp.network.FavoritesActivity"
+            android:label="@string/title_activity_favorites"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.SupportActivity"
+            android:label="@string/title_activity_support"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.LocationActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_location"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.DeactivateActivity"
+            android:label="@string/title_activity_deactivate"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.GalleryActivity"
+            android:label="@string/title_activity_gallery"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.ViewImageActivity"
+            android:label="@string/title_activity_view_image"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.ManagedGroupsActivity"
+            android:label="@string/title_activity_managed_groups"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.NewGroupActivity"
+            android:label="@string/title_activity_new_group"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.GroupActivity"
+            android:label="@string/title_activity_group"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.GroupSettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.GroupSearchActivity"
+            android:label="@string/title_activity_search">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <activity
+            android:name="class47.mainapp.network.BalanceActivity"
+            android:label="@string/title_activity_balance"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme">
+        </activity>
+
+        <activity
+            android:name="class47.mainapp.network.GiftsActivity"
+            android:label="@string/title_activity_gifts"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.FriendsActivity"
+            android:label="@string/title_activity_friends"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.WelcomeActivity"
+            android:label="@string/title_activity_welcome"/>
+        <activity
+            android:name="class47.mainapp.network.ReferralsActivity"
+            android:label="@string/title_activity_referrals"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.MarketNewItemActivity"
+            android:label="@string/title_activity_market_new_item"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.MarketViewItemActivity"
+            android:label="@string/title_activity_market_view_item"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.MarketMyItemsActivity"
+            android:label="@string/title_activity_market_my_items"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name="class47.mainapp.network.ViewYouTubeVideoActivity"
+            android:label="@string/title_activity_view_youtube_video"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.MarketActivity"
+            android:label="@string/title_activity_market"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.StreamActivity"
+            android:label="@string/title_activity_stream"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.GuestsActivity"
+            android:label="@string/title_activity_guests"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.GroupsActivity"
+            android:label="@string/title_activity_groups"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.NearbyActivity"
+            android:label="@string/title_activity_nearby"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.UpgradesActivity"
+            android:label="@string/title_activity_upgrades"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.PopularActivity"
+            android:label="@string/title_activity_popular"
+            android:theme="@style/MyMaterialTheme" />
+
+        <activity
+            android:name="class47.mainapp.network.RegisterActivity"
+            android:label="@string/title_activity_signup"/>
+
+        <activity android:name="class47.mainapp.network.MediaViewerActivity" />
+
+        <activity
+            android:name="class47.mainapp.network.BalanceHistoryActivity"
+            android:label="@string/title_activity_balance_history"/>
+
+        <activity
+            android:name="class47.mainapp.network.RecentlyDeletedActivity"
+            android:label="@string/title_activity_recently_deleted"
+            android:theme="@style/MyMaterialTheme" />
+
+    </application>
+
+</manifest>
